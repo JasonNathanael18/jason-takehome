@@ -7,10 +7,10 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-class MealResponseEntityConverter {
+class UserResponseEntityConverter {
 
     @TypeConverter
-    fun fromStringToMovieList(value: String): List<User>? =
+    fun fromStringToUserList(value: String): List<User>? =
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
@@ -18,7 +18,7 @@ class MealResponseEntityConverter {
             .fromJson(value)
 
     @TypeConverter
-    fun fromMovieListTypeToString(movieListType: List<User>?): String =
+    fun fromUserListTypeToString(movieListType: List<User>?): String =
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
@@ -27,7 +27,7 @@ class MealResponseEntityConverter {
 
 
     @TypeConverter
-    fun fromStringToMovieEntityList(value: String): List<UserEntity>? =
+    fun fromStringToUserEntityList(value: String): List<UserEntity>? =
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build().adapter<List<UserEntity>>(
@@ -38,7 +38,7 @@ class MealResponseEntityConverter {
             ).fromJson(value)
 
     @TypeConverter
-    fun fromMovieEntityListTypeToString(userEntityListType: List<UserEntity>?): String =
+    fun fromUserEntityListTypeToString(userEntityListType: List<UserEntity>?): String =
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build().adapter<List<UserEntity>>(

@@ -37,7 +37,7 @@ class FavouriteViewModel @Inject constructor(
                     is Resource.Success -> {
                         result.data?.let { list ->
                             viewModelState.update {
-                                it.copy(mealList = list, isLoading = false)
+                                it.copy(favouriteList = list, isLoading = false)
                             }
                         }
                     }
@@ -45,7 +45,7 @@ class FavouriteViewModel @Inject constructor(
                         viewModelState.update {
                             it.copy(
                                 error = result.message ?: "",
-                                mealList = listOf(),
+                                favouriteList = listOf(),
                                 isLoading = false
                             )
                         }
@@ -60,16 +60,14 @@ class FavouriteViewModel @Inject constructor(
 private data class FavouriteViewModelState(
     val isLoading: Boolean = false,
     val error: String = "",
-    val mealList: List<User> = listOf(),
-    val isPreviousPageLoaded: Boolean = false
+    val favouriteList: List<User> = listOf()
 ) {
     fun toUiState(): FavouriteUiState =
-        if (mealList.isEmpty()) FavouriteUiState.FavouriteListEmpty(
+        if (favouriteList.isEmpty()) FavouriteUiState.FavouriteListEmpty(
             isLoading = isLoading,
-            error = error,
-            isPreviousPageLoaded = isPreviousPageLoaded
+            error = error
         )
-        else FavouriteUiState.HasFavouriteList(isLoading = isLoading, error = error, mealList = mealList)
+        else FavouriteUiState.HasFavouriteList(isLoading = isLoading, error = error, favouriteList = favouriteList)
 }
 
 sealed interface FavouriteUiState {
@@ -77,14 +75,13 @@ sealed interface FavouriteUiState {
     val error: String
 
     data class HasFavouriteList(
-        val mealList: List<User>,
+        val favouriteList: List<User>,
         override val isLoading: Boolean,
         override val error: String
     ) : FavouriteUiState
 
     data class FavouriteListEmpty(
         override val isLoading: Boolean,
-        override val error: String,
-        val isPreviousPageLoaded: Boolean
+        override val error: String
     ) : FavouriteUiState
 }

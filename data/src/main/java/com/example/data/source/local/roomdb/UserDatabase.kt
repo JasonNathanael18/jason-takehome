@@ -5,18 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.data.source.local.roomdb.converter.MealResponseEntityConverter
+import com.example.data.source.local.roomdb.converter.UserResponseEntityConverter
 import com.example.data.source.local.roomdb.dao.FavouriteDao
 import com.example.data.source.local.roomdb.dao.UserDao
 import com.example.data.source.local.roomdb.entity.UserEntity
-import com.example.data.source.local.roomdb.entity.local.FavouriteEntity
+import com.example.data.source.local.roomdb.entity.FavouriteEntity
 
 @Database(
     entities = [UserEntity::class, FavouriteEntity::class],
     version = 1,
     exportSchema = false
 )
-@TypeConverters(MealResponseEntityConverter::class)
+@TypeConverters(UserResponseEntityConverter::class)
 abstract class UserDatabase : RoomDatabase() {
     abstract fun getUserDao(): UserDao
     abstract fun getFavouriteDao(): FavouriteDao

@@ -22,14 +22,9 @@ class ContentFragment : BaseFragment(R.layout.fragment_content) {
 
 
     private fun setupViewPager(viewpager: ViewPager) {
-        var adapter = ContentAdapter(childFragmentManager)
-
-        // LoginFragment is the name of Fragment and the Login
-        // is a title of tab
+        val adapter = ContentAdapter(childFragmentManager)
         adapter.addFragment(PopularFragment(), "Popular")
         adapter.addFragment(FavouriteFragment(), "Favourite")
-
-        // setting adapter to view pager.
         viewpager.adapter = adapter
     }
 }

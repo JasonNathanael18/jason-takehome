@@ -52,7 +52,7 @@ class FavouriteFragment : BaseFragment(R.layout.fragment_favourite),
                         }
 
                         it is FavouriteUiState.HasFavouriteList -> {
-                            adapter.addData(it.mealList)
+                            adapter.addData(it.favouriteList)
                             binding.rvFavouriteList.apply {
                                 hideWait()
                                 showData()

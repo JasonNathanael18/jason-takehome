@@ -69,16 +69,14 @@ class DetailViewModel @Inject constructor(
 private data class DetailViewModelState(
     val isLoading: Boolean = false,
     val error: String = "",
-    val data: User? = null,
-    val isPreviousPageLoaded: Boolean = false
+    val data: User? = null
 ) {
     fun toUiState(): DetailUiState =
         if (data == null) DetailUiState.DetailNotFound(
             isLoading = isLoading,
             error = error,
-            isPreviousPageLoaded = isPreviousPageLoaded
         )
-        else DetailUiState.HasDetail(isLoading = isLoading, error = error, mealList = data)
+        else DetailUiState.HasDetail(isLoading = isLoading, error = error, userData = data)
 }
 
 sealed interface DetailUiState {
@@ -86,14 +84,13 @@ sealed interface DetailUiState {
     val error: String
 
     data class HasDetail(
-        val mealList: User,
+        val userData: User,
         override val isLoading: Boolean,
         override val error: String
     ) : DetailUiState
 
     data class DetailNotFound(
         override val isLoading: Boolean,
-        override val error: String,
-        val isPreviousPageLoaded: Boolean
+        override val error: String
     ) : DetailUiState
 }

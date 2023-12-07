@@ -67,15 +67,15 @@ class PopularFragment : BaseFragment(R.layout.fragment_popular),
                             binding.rvPopularList.showWait()
                         }
 
-                        it is MealUiState.HasMealList -> {
-                            adapter.addData(it.mealList)
+                        it is PopularUiState.HasPopularList -> {
+                            adapter.addData(it.userList)
                             binding.rvPopularList.apply {
                                 hideWait()
                                 showData()
                             }
                         }
 
-                        it is MealUiState.MealListEmpty -> {
+                        it is PopularUiState.PopularListEmpty -> {
                             if (it.error.isNotEmpty()) {
                                 binding.rvPopularList.apply {
                                     hideWait()

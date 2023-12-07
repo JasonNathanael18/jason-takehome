@@ -1,5 +1,6 @@
 package com.example.feature_detail
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -52,16 +53,19 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
                 viewModel.uiState.collect {
                     when {
                         it.isLoading -> {
-
+                            binding.pbLoading.visibility = View.VISIBLE
                         }
 
                         it is DetailUiState.HasDetail -> {
-                            currentUser = it.mealList
-                            setupView(it.mealList)
+                            binding.layoutContent.visibility = View.VISIBLE
+                            binding.pbLoading.visibility = View.GONE
+                            currentUser = it.userData
+                            setupView(it.userData)
                         }
 
                         it is DetailUiState.DetailNotFound -> {
-
+                            binding.pbLoading.visibility = View.GONE
+                            binding.tvNotFound.visibility = View.VISIBLE
                         }
                     }
                 }

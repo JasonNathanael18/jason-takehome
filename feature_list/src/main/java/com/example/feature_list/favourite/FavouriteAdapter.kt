@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.domain.model.User
 import com.example.feature_list.R
-import com.example.feature_list.databinding.CompInfoItemUserListBinding
+import com.example.feature_list.databinding.CompInfoItemFavouriteListBinding
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
@@ -22,7 +22,7 @@ class FavouriteAdapter @Inject constructor(@ActivityContext private val context:
     }
 
     inner class MovieListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = CompInfoItemUserListBinding.bind(view)
+        val binding = CompInfoItemFavouriteListBinding.bind(view)
     }
 
     private var onItemClickListener: OnItemClickListener? = null
@@ -30,7 +30,7 @@ class FavouriteAdapter @Inject constructor(@ActivityContext private val context:
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.comp_info_item_user_list,
+            R.layout.comp_info_item_favourite_list,
             parent, false
         )
         return MovieListViewHolder(itemView)
@@ -47,7 +47,10 @@ class FavouriteAdapter @Inject constructor(@ActivityContext private val context:
             .thumbnail(0.1f)
             .into(holder.binding.ivThumbnail)
         holder.binding.apply {
-            labelMealName.text = data.login
+            labelName.text = data.login
+            labelCompany.text = data.company
+            labelEmail.text = data.email
+            labelLocation.text = data.location
         }
 
         holder.binding.itemUser.setOnClickListener {

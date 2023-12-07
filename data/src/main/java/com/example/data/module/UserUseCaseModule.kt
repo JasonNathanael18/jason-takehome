@@ -10,10 +10,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class MealUseCaseModule {
+class UserUseCaseModule {
 
     @Provides
     @Singleton
-    fun provideGetMealUseCase(repository: UserRepository): GetUser =
+    fun provideGetUserUseCase(repository: UserRepository): GetUser =
         GetUser(repository)
 }

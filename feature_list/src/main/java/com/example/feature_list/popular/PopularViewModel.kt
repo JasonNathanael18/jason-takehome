@@ -15,10 +15,10 @@ class PopularViewModel @Inject constructor(
     private val getUser: GetUser,
 ) : ViewModel() {
 
-    private val viewModelState = MutableStateFlow(MealViewModelState(isLoading = true))
+    private val viewModelState = MutableStateFlow(PopularViewModelState(isLoading = true))
 
     val uiState = viewModelState
-        .map(MealViewModelState::toUiState)
+        .map(PopularViewModelState::toUiState)
         .stateIn(
             viewModelScope,
             SharingStarted.Eagerly,
@@ -44,7 +44,7 @@ class PopularViewModel @Inject constructor(
                     is Resource.Success -> {
                         result.data?.let { list ->
                             viewModelState.update {
-                                it.copy(mealList = list, isLoading = false)
+                                it.copy(userList = list, isLoading = false)
                             }
                         }
                     }
@@ -52,7 +52,7 @@ class PopularViewModel @Inject constructor(
                         viewModelState.update {
                             it.copy(
                                 error = result.message ?: "",
-                                mealList = listOf(),
+                                userList = listOf(),
                                 isLoading = false
                             )
                         }
@@ -75,34 +75,31 @@ class PopularViewModel @Inject constructor(
 
 }
 
-private data class MealViewModelState(
+private data class PopularViewModelState(
     val isLoading: Boolean = false,
     val error: String = "",
-    val mealList: List<User> = listOf(),
-    val isPreviousPageLoaded: Boolean = false
+    val userList: List<User> = listOf()
 ) {
-    fun toUiState(): MealUiState =
-        if (mealList.isEmpty()) MealUiState.MealListEmpty(
+    fun toUiState(): PopularUiState =
+        if (userList.isEmpty()) PopularUiState.PopularListEmpty(
             isLoading = isLoading,
-            error = error,
-            isPreviousPageLoaded = isPreviousPageLoaded
+            error = error
         )
-        else MealUiState.HasMealList(isLoading = isLoading, error = error, mealList = mealList)
+        else PopularUiState.HasPopularList(isLoading = isLoading, error = error, userList = userList)
 }
 
-sealed interface MealUiState {
+sealed interface PopularUiState {
     val isLoading: Boolean
     val error: String
 
-    data class HasMealList(
-        val mealList: List<User>,
+    data class HasPopularList(
+        val userList: List<User>,
         override val isLoading: Boolean,
         override val error: String
-    ) : MealUiState
+    ) : PopularUiState
 
-    data class MealListEmpty(
+    data class PopularListEmpty(
         override val isLoading: Boolean,
-        override val error: String,
-        val isPreviousPageLoaded: Boolean
-    ) : MealUiState
+        override val error: String
+    ) : PopularUiState
 }

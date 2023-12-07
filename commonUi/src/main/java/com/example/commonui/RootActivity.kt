@@ -18,13 +18,8 @@ class RootActivity : AppCompatActivity(), ToFlowNavigatable {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_root)
-//        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-//
         val navController = findNavController(R.id.nav_host_fragment)
-
         navigator.navController = navController
-//
-//        navView.setupWithNavController(navController)
     }
 
     override fun navigateToFlow(flow: NavigationFlow) {

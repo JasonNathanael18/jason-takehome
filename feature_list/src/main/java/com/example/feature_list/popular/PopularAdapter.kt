@@ -47,7 +47,7 @@ class PopularAdapter @Inject constructor(@ActivityContext private val context: C
             .thumbnail(0.1f)
             .into(holder.binding.ivThumbnail)
         holder.binding.apply {
-            labelMealName.text = data.login
+            labelName.text = data.login
         }
 
         holder.binding.itemUser.setOnClickListener {

@@ -12,11 +12,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class MealRepositoryModule {
+class UserRepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMealRepositoryImpl(
+    fun provideUserRepositoryImpl(
         userApiService: UserApiService,
         userDao: UserDao
     ): UserRepository = UserRepositoryImpl(userApiService, userDao)

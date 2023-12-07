@@ -1,6 +1,6 @@
 package com.example.data.source.local.roomdb.converter
 
-import com.example.data.source.local.roomdb.entity.local.FavouriteEntity
+import com.example.data.source.local.roomdb.entity.FavouriteEntity
 import com.example.domain.model.User
 
 object FavouriteEntityConverter {
