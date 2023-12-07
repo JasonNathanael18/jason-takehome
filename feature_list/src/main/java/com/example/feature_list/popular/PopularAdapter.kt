@@ -19,7 +19,6 @@ class PopularAdapter @Inject constructor(@ActivityContext private val context: C
 
     interface OnItemClickListener {
         fun onItemClick(view: View, item: User)
-        fun onImageClick(view: View, item: User)
     }
 
     inner class MovieListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -49,10 +48,6 @@ class PopularAdapter @Inject constructor(@ActivityContext private val context: C
             .into(holder.binding.ivThumbnail)
         holder.binding.apply {
             labelMealName.text = data.login
-        }
-
-        holder.binding.ivThumbnail.setOnClickListener {
-            onItemClickListener?.onImageClick(it, datas[position])
         }
 
         holder.binding.itemUser.setOnClickListener {

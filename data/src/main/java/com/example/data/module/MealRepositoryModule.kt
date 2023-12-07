@@ -1,7 +1,7 @@
 package com.example.data.module
 
 import com.example.data.repository.UserRepositoryImpl
-import com.example.data.source.local.roomdb.dao.MealDao
+import com.example.data.source.local.roomdb.dao.UserDao
 import com.example.data.source.remote.UserApiService
 import com.example.domain.repository.UserRepository
 import dagger.Module
@@ -18,7 +18,7 @@ class MealRepositoryModule {
     @Singleton
     fun provideMealRepositoryImpl(
         userApiService: UserApiService,
-        mealDao: MealDao
-    ): UserRepository = UserRepositoryImpl(userApiService, mealDao)
+        userDao: UserDao
+    ): UserRepository = UserRepositoryImpl(userApiService, userDao)
 
 }

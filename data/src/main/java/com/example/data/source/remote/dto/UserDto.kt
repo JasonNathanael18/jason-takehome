@@ -13,11 +13,27 @@ data class UserDto(
     @Json(name = "avatar_url")
     val avatarUrl: String? = null,
 
+    @Json(name = "name")
+    val name: String? = null,
+
+    @Json(name = "company")
+    val company: String? = null,
+
+    @Json(name = "email")
+    val email: String? = null,
+
+    @Json(name = "location")
+    val location: String? = null,
+
     ) {
     fun toUserEntity(): UserEntity {
         return UserEntity(
             login = login.orEmpty(),
             avatarUrl = avatarUrl.orEmpty(),
+            name = name.orEmpty(),
+            company = company.orEmpty(),
+            location = location.orEmpty(),
+            email = email.orEmpty()
         )
     }
 }

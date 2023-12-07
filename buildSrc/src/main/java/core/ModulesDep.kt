@@ -9,6 +9,6 @@ object ModulesDep {
     const val navigation = ":navigation"
 
     const val featureList = ":feature_list"
-    const val authentication = ":featureauth"
+    const val featureDetail = ":feature_detail"
 }
 

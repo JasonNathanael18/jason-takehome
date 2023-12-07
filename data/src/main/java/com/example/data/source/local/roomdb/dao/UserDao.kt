@@ -7,7 +7,7 @@ import androidx.room.Query
 import com.example.data.source.local.roomdb.entity.UserEntity
 
 @Dao
-interface MealDao {
+interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUserList(movies: List<UserEntity>)

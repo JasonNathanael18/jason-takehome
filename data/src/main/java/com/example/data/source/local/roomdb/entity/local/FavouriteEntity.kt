@@ -1,11 +1,11 @@
-package com.example.data.source.local.roomdb.entity
+package com.example.data.source.local.roomdb.entity.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.domain.model.User
 
-@Entity(tableName = UserEntity.TABLE_NAME)
-data class UserEntity(
+@Entity(tableName = FavouriteEntity.TABLE_NAME)
+data class FavouriteEntity(
     @PrimaryKey val login: String,
     val avatarUrl: String,
     val name: String,
@@ -13,7 +13,6 @@ data class UserEntity(
     val email: String,
     val location: String,
 ) {
-
     fun toUser(): User {
         return User(
             login = login,
@@ -26,6 +25,6 @@ data class UserEntity(
     }
 
     companion object {
-        const val TABLE_NAME = "user"
+        const val TABLE_NAME = "favourite"
     }
 }

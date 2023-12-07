@@ -1,6 +1,7 @@
 package com.example.feature_list.popular
 
 import android.content.Context
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -9,15 +10,19 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.commonui.BaseFragment
 import com.example.commonui.component.CompRecyclerView
+import com.example.domain.model.User
 import com.example.feature_list.R
 import com.example.feature_list.databinding.FragmentPopularBinding
+import com.example.navigation.NavigationFlow
+import com.example.navigation.ToFlowNavigatable
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class PopularFragment : BaseFragment(R.layout.fragment_popular),
-    CompRecyclerView.LoadMoreListener{
+    CompRecyclerView.LoadMoreListener,
+    PopularAdapter.OnItemClickListener {
 
     @Inject
     lateinit var adapter: PopularAdapter
@@ -42,6 +47,7 @@ class PopularFragment : BaseFragment(R.layout.fragment_popular),
     override fun initEventListener() {
         super.initEventListener()
         binding.rvPopularList.listener = this
+        adapter.setOnItemClickListener(this)
 
         binding.compSearchBox.onSearchPerformed { query ->
             adapter.clearData()
@@ -98,5 +104,9 @@ class PopularFragment : BaseFragment(R.layout.fragment_popular),
         val imm: InputMethodManager =
             activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view?.windowToken, 0)
+    }
+
+    override fun onItemClick(view: View, item: User) {
+        (requireActivity() as ToFlowNavigatable).navigateToFlow(NavigationFlow.DetailFlow(item.login))
     }
 }

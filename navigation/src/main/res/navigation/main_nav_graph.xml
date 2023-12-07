@@ -13,9 +13,13 @@
     <action
         android:id="@+id/action_global_detail_flow"
         app:destination="@id/detail_flow"
-        app:popUpTo="@id/main_nav_graph"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim">
+
+        <argument
+            android:name="msg"
+            app:argType="string" />
+
     </action>
 
     <action

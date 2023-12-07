@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
     fun getUserList(query: String, page: Int): Flow<Resource<List<User>>>
-    //fun getMealDetail(idMeal: String): Flow<Resource<List<User>>>
+    fun getUserDetail(userName: String): Flow<Resource<User>>
 }

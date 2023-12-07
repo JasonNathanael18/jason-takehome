@@ -16,7 +16,7 @@ class GetUser(
         return userRepository.getUserList(query, page)
     }
 
-//    fun getMealDetail(idMeal: String = ""): Flow<Resource<List<User>>> {
-//        return userRepository.getMealDetail(idMeal)
-//    }
+    fun getUserDetail(userName: String = ""): Flow<Resource<User>> {
+        return userRepository.getUserDetail(userName)
+    }
 }

@@ -20,4 +20,9 @@ class MealDatabaseModule {
     @Provides
     fun provideUserDao(database: UserDatabase) =
         database.getUserDao()
+
+    @Singleton
+    @Provides
+    fun provideFavouriteDao(database: UserDatabase) =
+        database.getFavouriteDao()
 }
