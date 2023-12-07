@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This linear layout is used to show elements
-     in vertical or in horizontal linear manner -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:orientation="vertical">
 
-    <!-- This TextView indicates new fragment is open -->
-    <TextView
+    <com.example.commonui.component.CompRecyclerView
+        android:id="@+id/rvFavouriteList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Favourite Fragment"
-        android:textColor="#0F9D58"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent" />
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
