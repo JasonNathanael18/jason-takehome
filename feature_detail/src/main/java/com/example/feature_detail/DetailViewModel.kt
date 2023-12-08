@@ -38,9 +38,9 @@ class DetailViewModel @Inject constructor(
                         }
                     }
                     is Resource.Success -> {
-                        result.data?.let { list ->
+                        result.data?.let { user ->
                             viewModelState.update {
-                                it.copy(data = list, isLoading = false)
+                                it.copy(data = user, isLoading = false)
                             }
                         }
                     }

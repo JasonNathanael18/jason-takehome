@@ -49,12 +49,10 @@ internal val testImplementationDependencies = listOf(
     Dependencies.testRunner,
     Dependencies.testRules,
     Dependencies.kotlinCoroutinesTest,
-    Dependencies.dexmakerMockito,
     Dependencies.turbine,
 )
 
 internal val androidTestImplementationDependencies = listOf(
-    Dependencies.dexmakerMockito,
     Dependencies.googleTruth,
     Dependencies.archCore,
     Dependencies.jUnit,
